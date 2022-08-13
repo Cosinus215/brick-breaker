@@ -16,6 +16,7 @@ public class BallShooter : MonoBehaviour {
             Ball.velocity = new Vector2(shootDirection.x, shootDirection.y).normalized * 10;
             Ball.transform.parent = null;
         }
+
     }
 
 }
