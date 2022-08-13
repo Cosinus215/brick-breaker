@@ -10,15 +10,15 @@ public class BlockGenerate : MonoBehaviour {
     private void Start() {
         if (LevelButton.levelname == "Easy") { RandomNumber = Random.Range(10, 15); }
         else if (LevelButton.levelname == "Medium") { RandomNumber = Random.Range(20, 25); }
-        else if (LevelButton.levelname == "Hard") { RandomNumber = Random.Range(30, 35); }
+        else if (LevelButton.levelname == "Hard") { RandomNumber = Random.Range(30, 35); } 
+        else { RandomNumber = Random.Range(20, 30); }
 
-        Debug.Log(LevelButton.levelname);
         for (int i = 0; i < RandomNumber; i++) {
             GameObject Block = new GameObject();
             Block.transform.parent = this.gameObject.transform;
             Block.tag = "Block";
             Block.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
+            
             Block.AddComponent<SpriteRenderer>();
             Block.AddComponent<BoxCollider2D>();
             Block.AddComponent<BlockScript>();
