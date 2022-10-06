@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Died : MonoBehaviour { 
     void Start() {
         //Wait for 5 seconds
-        Invoke("Restart", 5);
+        Invoke("Restart", 3);
     }
 
 

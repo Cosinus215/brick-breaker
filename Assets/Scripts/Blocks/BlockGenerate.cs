@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class BlockGenerate : MonoBehaviour {
     private int RandomNumber;
     private List<Vector2> Position = new List<Vector2>();
+    public static int Player_Level;
+    private Save_data data;
 
     private void Start() {
         //Choose the number of blocks
@@ -23,6 +25,10 @@ public class BlockGenerate : MonoBehaviour {
 
     private void Update() {
         if (Time.time > 3 && transform.childCount == 0) {
+            //data.Save();
+            if (Player_Level != 3) {
+                Player_Level++;
+            }
             SceneManager.LoadScene("Win");
         }
     }

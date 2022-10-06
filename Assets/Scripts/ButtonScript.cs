@@ -10,6 +10,17 @@ public class ButtonScript : MonoBehaviour {
 
     void Start() {
         btn = gameObject.GetComponent<Button>();
+
+        if (BlockGenerate.Player_Level == 0 && btn.name == "Easy") {
+            BlockGenerate.Player_Level = 1;
+        }
+        if (BlockGenerate.Player_Level == 2 && btn.name == "Medium") {
+            btn.GetComponent<Button>().interactable = true;
+        } 
+        if (BlockGenerate.Player_Level == 3 && (btn.name == "Hard" || btn.name == "Medium")) {
+            btn.GetComponent<Button>().interactable = true;
+        }
+
         btn.onClick.AddListener(TaskOnClick);
     }
 
