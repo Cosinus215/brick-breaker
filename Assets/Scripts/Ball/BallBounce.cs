@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallBounce : MonoBehaviour {
-    public Rigidbody2D rb;
-    public Vector3 lastVelocity;
+    private Rigidbody2D rb;
+    private Vector3 lastVelocity;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>(); 

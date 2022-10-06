@@ -9,30 +9,42 @@ public class BlockScript : MonoBehaviour {
     private GameObject Boost;
 
     private void Start() {
-        HardBlockSprite = Resources.Load<Sprite>("Sprite/Hard Block");
-        BlockSprite = Resources.Load<Sprite>("Sprite/Block");
-        Boost = Resources.Load<GameObject>("Boost");
-
-        Health = Random.Range(1, 3);
-        GetComponent<SpriteRenderer>().color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
-    }
-
-    private void Update() {
-        if (Health == 2) {
-            GetComponent<SpriteRenderer>().sprite = HardBlockSprite;
-        } else if (Health == 1) {
-            GetComponent<SpriteRenderer>().sprite = BlockSprite;
-        }
+        Load_Resources();
+        Set_Random_block();
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
         if (collision.gameObject.name == "Ball") {
             if (Health == 1) {
                 AllFunc(collision);
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             } else if (Health == 2) {
+                GetComponent<SpriteRenderer>().sprite = BlockSprite;
                 Health--;
             }
+        }
+    }
+
+    void Load_Resources() {
+        HardBlockSprite = Resources.Load<Sprite>("Sprite/Hard Block");
+        BlockSprite = Resources.Load<Sprite>("Sprite/Block");
+        Boost = Resources.Load<GameObject>("Boost");
+    }
+
+    void Set_Random_block() {
+        //Pick random health
+        Health = Random.Range(1, 3);
+
+        //Pick Random color
+        GetComponent<SpriteRenderer>().color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
+
+        //Set correct sprite
+        if (Health == 2) {
+            //Set the block to hardblock
+            GetComponent<SpriteRenderer>().sprite = HardBlockSprite;
+        } else if (Health == 1) {
+            //Set the block to normalblock
+            GetComponent<SpriteRenderer>().sprite = BlockSprite;
         }
     }
 

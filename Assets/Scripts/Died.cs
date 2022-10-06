@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Died : MonoBehaviour { 
     void Start() {
+        //Wait for 5 seconds
         Invoke("Restart", 5);
     }
 
 
-    public void Restart() {
+    void Restart() {
+        //Load main scene
         SceneManager.LoadScene("Start");
     }
 }

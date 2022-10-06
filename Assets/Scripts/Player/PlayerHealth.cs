@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
-    public int Health;
-    public GameObject Hearts;
+    [SerializeField] private int Health;
+    [SerializeField] private GameObject Hearts;
 
     private void Update() {
         Health = Hearts.transform.childCount;
